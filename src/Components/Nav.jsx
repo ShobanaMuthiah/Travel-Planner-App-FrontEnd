@@ -36,7 +36,7 @@ const Nav = () => {
 
     <Navbar className="Navbar" fluid rounded>
       <Navbar.Brand href="/">
-        <img src="src\Components\Icon\airplane_2200326.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+        <img src="https://img.icons8.com/?size=100&id=vAyHnkZOlhyF&format=png&color=000000" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Apexora</span>
       </Navbar.Brand>
       <div className="flex md:order-2">

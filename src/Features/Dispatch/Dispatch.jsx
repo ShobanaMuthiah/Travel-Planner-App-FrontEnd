@@ -21,7 +21,7 @@ import {
 
 export const login = async (email, password) => {
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+    const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/login', { email, password });
     const { user, token } = res.data;
 
     // Set token in localStorage
@@ -43,7 +43,7 @@ export const login = async (email, password) => {
 
 export const register = async (name, email, password, role) => {
   try {
-    await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role });
+    await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/register', { name, email, password, role });
   } catch (error) {
     console.error('Registration failed', error);
   }
@@ -59,7 +59,7 @@ export const fetchBookings =createAsyncThunk(
 
   async (token) => {
     try {
-      const res = await axios.get('http://localhost:5000/api/bookings', { headers: { 'Authorization': token } });
+      const res = await axios.get('https://travel-planner-app-backend.onrender.com/api/bookings', { headers: { 'Authorization': token } });
       updateBookings(res.data);
     } catch (error) {
       console.error('Failed to fetch bookings', error);
@@ -93,7 +93,7 @@ if (!user._id) {
     const id=  user._id;
    
     console.log(id);
-    const resData=await axios.get(`http://localhost:5000/api/bookings/${id}`, { headers: { 'Authorization': token } })
+    const resData=await axios.get(`https://travel-planner-app-backend.onrender.com/api/bookings/${id}`, { headers: { 'Authorization': token } })
       updateBookings(resData.data);
 
    
@@ -109,7 +109,7 @@ export const createBooking = createAsyncThunk('booking/createBooking',
     try {
       console.log(token)
       token=localStorage.getItem('token')
-      const res = await axios.post('http://localhost:5000/api/bookings/create', bookingData, { headers: { 'Authorization': token } });
+      const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/bookings/create', bookingData, { headers: { 'Authorization': token } });
       addNewBooking(res.data.newBooking);
     } catch (error) {
       console.error('Booking failed', error);
@@ -121,7 +121,7 @@ export const removeBooking = createAsyncThunk('bookings/removeBooking',
   async (_id, token) => {
     try {
       token=localStorage.getItem('token')
-      await axios.delete(`http://localhost:5000/api/bookings/${_id}`, { headers: { 'Authorization': token } });
+      await axios.delete(`https://travel-planner-app-backend.onrender.com/api/bookings/${_id}`, { headers: { 'Authorization': token } });
       deleteBooking(_id);
     } catch (error) {
       console.error('Failed to delete booking', error);
@@ -135,7 +135,7 @@ export const fetchTravelPlans = createAsyncThunk('fetchTravelPlans',
     try {
       token=localStorage.getItem('token')
 
-      const res = await axios.get('http://localhost:5000/api/travel-plans', { headers: { 'Authorization': token } });
+      const res = await axios.get('https://travel-planner-app-backend.onrender.com/api/travel-plans', { headers: { 'Authorization': token } });
       updateTravelPlans(res.data);
     } catch (error) {
       console.error('Failed to fetch travel plans', error);
@@ -148,7 +148,7 @@ export const createTravelPlan = createAsyncThunk('travel-plans/createTravelPlan'
     token=localStorage.getItem('token')
 
     try {
-      const res = await axios.post('http://localhost:5000/api/travel-plans/create', planData, { headers: { 'Authorization': token } });
+      const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/travel-plans/create', planData, { headers: { 'Authorization': token } });
       addNewTravelPlan(res.data.newTravelPlan);
     } catch (error) {
       console.error('Failed to create travel plan', error);
@@ -161,7 +161,7 @@ export const editTravelPlan = createAsyncThunk('editTravelplan',
     token=localStorage.getItem('token')
 
     try {
-      const res = await axios.put(`http://localhost:5000/api/travel-plans/${id}`, planData, { headers: { 'Authorization': token } });
+      const res = await axios.put(`https://travel-planner-app-backend.onrender.com/api/travel-plans/${id}`, planData, { headers: { 'Authorization': token } });
       modifyTravelPlan(res.data);
     } catch (error) {
       console.error('Failed to update travel plan', error);
@@ -173,7 +173,7 @@ export const removeTravelPlan = createAsyncThunk('removeTravelPlan',
   async (_id, token) => {
     token=localStorage.getItem('token')
     try {
-      await axios.delete(`http://localhost:5000/api/travel-plans/${_id}`, { headers: { 'Authorization': token } });
+      await axios.delete(`https://travel-planner-app-backend.onrender.com/api/travel-plans/${_id}`, { headers: { 'Authorization': token } });
       deleteTravelPlan(_id);
     } catch (error) {
       console.error('Failed to delete travel plan', error);
@@ -185,7 +185,7 @@ export const removeTravelPlan = createAsyncThunk('removeTravelPlan',
 export const fetchTourPlans = createAsyncThunk('fetchTourPlans',
   async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/tour-plans');
+      const res = await axios.get('https://travel-planner-app-backend.onrender.com/api/tour-plans');
       updateTourPlans(res.data);
     } catch (error) {
       console.error('Failed to fetch travel plans', error);
@@ -198,7 +198,7 @@ export const createTourPlan = createAsyncThunk('createTourPlan',
     token=localStorage.getItem('token')
 
     try {
-      const res = await axios.post('http://localhost:5000/api/tour-plans/create', planData, { headers: { 'Authorization': token } });
+      const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/tour-plans/create', planData, { headers: { 'Authorization': token } });
       addNewTourPlan(res.data);
     } catch (error) {
       console.error('Failed to create travel plan', error);
@@ -211,7 +211,7 @@ export const editTourPlan = createAsyncThunk('editourplan',
     token=localStorage.getItem('token')
 
     try {
-      const res = await axios.put(`http://localhost:5000/api/tour-plans/${id}`, planData, { headers: { 'Authorization': token } });
+      const res = await axios.put(`https://travel-planner-app-backend.onrender.com/api/tour-plans/${id}`, planData, { headers: { 'Authorization': token } });
       modifyTourPlan(res.data);
     } catch (error) {
       console.error('Failed to update travel plan', error);
@@ -224,7 +224,7 @@ export const removeTourPlan = createAsyncThunk('removetourplan',
     token=localStorage.getItem('token')
 
     try {
-      await axios.delete(`http://localhost:5000/api/tour-plans/${id}`, { headers: { 'Authorization': token } });
+      await axios.delete(`https://travel-planner-app-backend.onrender.com/api/tour-plans/${id}`, { headers: { 'Authorization': token } });
       deleteTourPlan(id);
     } catch (error) {
       console.error('Failed to delete travel plan', error);
