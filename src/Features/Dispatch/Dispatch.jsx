@@ -19,35 +19,38 @@ import {
 
 // Authentication
 
-export const login = async (email, password) => {
+export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try {
     const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/login', { email, password });
     const { user, token } = res.data;
 
-    // Set token in localStorage
     if (user.role === 'admin') {
       user.isAdmin = true; // Add isAdmin flag to user object
     }
+
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
 
-
-    // Dispatch action to update authentication data in Redux
-    updateAuthData(user, token);
+    updateAuthData(user, token)
   } catch (error) {
     console.error('Login failed', error);
+    throw error;
   }
-};
+});
 
 
 
-export const register = async (name, email, password, role) => {
-  try {
-    await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/register', { name, email, password, role });
-  } catch (error) {
-    console.error('Registration failed', error);
+export const register = createAsyncThunk('register',
+  async ({name, email, password, role}) => {
+    try {
+      await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/register', { name, email, password, role });
+  
+   
+    } catch (error) {
+      console.error('Registration failed', error);
+    }
   }
-};
+)
 
 export const logout = () => {
   clearAuth();

@@ -2,17 +2,39 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../Features/Dispatch/Dispatch'; // Adjust the import path as necessary
 import { Button } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('customer');
+
+  const [registrationSuccess, setRegistrationSuccess] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    await dispatch(register(name, email, password, role)); // Assuming register action returns a promise
+    setSubmitted(true);
+    try {
+      const result = await dispatch(register({ name, email, password, role }));
+      if (register.fulfilled.match(result)) {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setRole('customer');
+        setRegistrationSuccess(true);
+        setErrorMessage('');
+      } else {
+        throw new Error(result.error.message);
+      }
+    } catch (error) {
+      setRegistrationSuccess(false);
+      setErrorMessage('Registration failed: ' + (error.message || 'Unknown error'));
+    }
   };
 
   return (
@@ -77,10 +99,24 @@ const Register = () => {
         </div>
 
         <div className="flex justify-center mt-6">
-          <Button type="submit" className=" px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+          <Button type="submit" gradientMonochrome="cyan" className="rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Register
           </Button>
         </div>
+        
+        {submitted && (
+          <div className="flex justify-center mt-4">
+            {registrationSuccess === true && (
+              <>
+              <span className="text-green-500">Registration Successful.  Check your mail!!</span>
+              
+              </>
+            )}
+            {registrationSuccess === false && (
+              <span className="text-red-500">{errorMessage}</span>
+            )}
+          </div>
+        )}
       </form>
     </div>
   );

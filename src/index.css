@@ -6,6 +6,11 @@ body{
     padding:0;
     box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.098);
+    
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 .img{
     height:150px !important;
@@ -13,11 +18,184 @@ body{
 
 .Navbar{
     background-color: rgba(18, 56, 18, 0.258) !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 10px !important;
 }
 .navLink{
     color: rgb(255, 255, 255) !important;
 }
 .navLink:hover{
     color:greenyellow !important;
+    font-weight:bolder !important;
+    font-size: medium !important;
+
 }
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-bottom: 15px !important;
+  }
+  
+  .animated-text {
+    font-size: 3rem; /* Adjust font size */
+    font-weight: bold;
+    display: flex;
+  }
+  
+  .word {
+    display: inline-block;
+  }
+  
+  .word:nth-child(1) {
+    animation: jumble1 1.5s infinite alternate;
+    color: rgb(169, 46, 66) !important;
+  }
+  
+  .word:nth-child(2) {
+    animation: jumble2 1.5s infinite alternate;
+    color: rgb(224, 117, 134) !important;
+
+  }
+  
+  .word:nth-child(3) {
+    animation: jumble3 1.5s infinite alternate;
+    color: rgb(232, 142, 157) !important;
+
+  }
+  
+  .word:nth-child(4) {
+    animation: jumble4 1.5s infinite alternate;
+    color: rgb(224, 117, 134) !important;
+
+  }
+  
+  .word:nth-child(5) {
+    animation: jumble5 1.5s infinite alternate;
+    color: rgb(232, 142, 157) !important;
+
+  }
+  
+  .word:nth-child(6) {
+    animation: jumble6 1.5s infinite alternate;
+    color: rgb(224, 117, 134) !important;
+
+  }
+  
+  .word:nth-child(7) {
+    animation: jumble7 1.5s infinite alternate;
+    color: rgb(169, 46, 66) !important;
+
+
+  }
+  
+  @keyframes jumble1 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(10px, 10px, 0);
+    }
+    50% {
+      transform: translate3d(-10px, -10px, 0);
+    }
+    75% {
+      transform: translate3d(10px, -10px, 0);
+    }
+  }
+  
+  @keyframes jumble2 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(10px, -10px, 0);
+    }
+    50% {
+      transform: translate3d(-10px, 10px, 0);
+    }
+    75% {
+      transform: translate3d(-10px, -10px, 0);
+    }
+  }
+  
+  @keyframes jumble3 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(10px, 0, 0);
+    }
+    50% {
+      transform: translate3d(-10px, 0, 0);
+    }
+    75% {
+      transform: translate3d(0, 10px, 0);
+    }
+  }
+  
+  @keyframes jumble4 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(0, 10px, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+    75% {
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  
+  @keyframes jumble5 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-10px, 10px, 0);
+    }
+    50% {
+      transform: translate3d(10px, -10px, 0);
+    }
+    75% {
+      transform: translate3d(-10px, -10px, 0);
+    }
+  }
+  
+  @keyframes jumble6 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-10px, -10px, 0);
+    }
+    50% {
+      transform: translate3d(10px, 10px, 0);
+    }
+    75% {
+      transform: translate3d(10px, -10px, 0);
+    }
+  }
+  
+  @keyframes jumble7 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate3d(-10px, 0, 0);
+    }
+    50% {
+      transform: translate3d(10px, 0, 0);
+    }
+    75% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+  footer{
+    margin-top: 10px !important;
+  }
+  .fLink:hover{
+color:purple;
+font-weight:bolder
+  }

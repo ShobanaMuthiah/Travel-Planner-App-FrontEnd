@@ -14,6 +14,7 @@ import Nav from './Components/Nav';
 import UserTravel from './Pages/UserTravel';
 import Activate from './Pages/Activate';
 import UserTour from './Pages/UserTour';
+import Footer from './Components/Footer';
 
 const App = () => {
   return (
@@ -38,8 +39,7 @@ const App = () => {
         <Route path='/mybookings' element={<MyBooking/>}/>
         <Route path='/activate/:token' element={<Activate/>}/>
 </Routes>
-    
-
+    <Footer/>
     </BrowserRouter>
   );
 };

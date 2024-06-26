@@ -5,6 +5,7 @@ import travelPlanReducer from '../Slices/TravelPlanSlice';
 import tourPlanReducer from '../Slices/tourPlanSlice';
 import {thunk} from 'redux-thunk';
 
+
 const store = configureStore({
   reducer: {
     auth: authReducer,
