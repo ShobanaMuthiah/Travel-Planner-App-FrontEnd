@@ -11,7 +11,7 @@ const Activate = () => {
   useEffect(() => {
     const activateAccount = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/auth/activate/${token}`);
+        const response = await axios.get(`https://travel-planner-app-backend.onrender.com/api/auth/activate/${token}`);
         setMessage(response.data.message);
         setError(false);
       } catch (err) {
