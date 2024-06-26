@@ -203,7 +203,7 @@ const Home = () => {
         </p>
       </section>
       <section id="privacy">
-        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">About Us</h2>
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">Privacy Policy</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
           imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
