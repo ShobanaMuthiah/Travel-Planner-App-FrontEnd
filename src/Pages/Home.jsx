@@ -179,6 +179,47 @@ const Home = () => {
           </div>
         ))}
       </div>
+      <section id="about-us">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+      </section>
+      <section id="privacy">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        </section>
       </div>
       {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
     </div>

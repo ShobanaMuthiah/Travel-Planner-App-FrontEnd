@@ -33,16 +33,16 @@ const UserTravel = () => {
             <img
                 src={plan.image}
                 alt={plan.destination}
-                className="w-full img object-cover"
+                className="w-full h-48 object-cover"
               />
             </div>
               <div className="p-4 col">
                 <h3 className="text-xl font-bold mb-2">{plan.destination}</h3>
                 <p className="text-gray-700 mb-2">{plan.details}</p>
                 <p className="text-gray-700 mb-2">Transportation: {plan.transportation}</p>
-                <p className="text-gray-700 mb-4">Departure: ${plan.departure}</p>
-                <p className="text-gray-700 mb-4">Arrival: ${plan.arrival}</p>
-                <p className="text-gray-700 mb-4">Duration: ${plan.timing}</p>
+                <p className="text-gray-700 mb-2">Departure: {plan.departure}</p>
+                <p className="text-gray-700 mb-2">Arrival: {plan.arrival}</p>
+                <p className="text-gray-700 mb-2">Duration: {plan.timing}</p>
 
 
                 <div className="flex justify-between">

@@ -20,7 +20,7 @@ const TravelPlanList = () => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Travel Plans</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1  gap-4">
         {travelPlans.map((plan) => (
           <div key={plan._id} className="bg-white row border border-gray-200 rounded-lg overflow-hidden shadow-md">
            <div className="col">
