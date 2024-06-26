@@ -1,7 +1,6 @@
 import React from 'react';
 import 'flowbite/dist/flowbite.css';
 import { Link } from 'react-router-dom';
-import { ScrollLink } from 'react-scroll';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
