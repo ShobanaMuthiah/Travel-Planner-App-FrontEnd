@@ -36,7 +36,7 @@ const Home = () => {
   ];
   return (
   
-    <div className="p-4">
+    <div >
       <style>
     {`
      .image {
@@ -87,6 +87,7 @@ const Home = () => {
         <span className="word text-rose-300">A</span>
       </h1>
     </div>
+    <h2 className='text-center italic  quote mb-1'>"Make your international trip today with Apexora"</h2>
           <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel
         additionalTransfrom={0}
@@ -149,7 +150,7 @@ const Home = () => {
         ))}
       </Carousel>
     </div>
-      <h2 className=" text-2xl font-bold mb-3 ">Tour Plans</h2>
+      <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">Tour Plans</h2>
       <div className="align-center">
 
       <div className="row row-cols-1 row-cols-sm-3 ">
@@ -164,8 +165,8 @@ const Home = () => {
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
                 <p className="text-gray-700 mb-2">{plan.description}</p>
-                <p className="text-gray-700 mb-2">Duration: {plan.duration}</p>
-                <p className="text-gray-700 mb-4">Price: ${plan.price}</p>
+                <p className="text-gray-700 mb-2">Duration: {plan.duration} Days</p>
+                <p className="text-gray-700 mb-4">Price: &nbsp; &#8377; {plan.price}</p>
                 <div className="flex justify-between">
                   <Button gradientMonochrome="lime" pill
                     

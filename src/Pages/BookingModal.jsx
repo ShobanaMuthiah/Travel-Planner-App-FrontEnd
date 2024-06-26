@@ -1,7 +1,8 @@
 import { ImCancelCircle } from "react-icons/im";
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createBooking } from '../Features/Dispatch/Dispatch'; // Make sure to import the correct action
+import { createBooking } from '../Features/Dispatch/Dispatch';
+import { Button } from "flowbite-react";
 
 const BookingModal = ({ plan, onClose }) => {
   const [customerName, setCustomerName] = useState('');
@@ -28,7 +29,7 @@ const BookingModal = ({ plan, onClose }) => {
   };
   
   return (
-    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-md p-4 w-full max-w-md h-full max-h-[80%] overflow-y-auto relative">
         <button 
           type="button" 
@@ -125,12 +126,12 @@ const BookingModal = ({ plan, onClose }) => {
           </div>
           
           <div className="flex justify-between mt-4">
-            <button type="button" className="bg-gray-500 text-red-600 px-4 py-2 rounded" onClick={onClose}>
+            <Button gradientDuoTone="redToYellow"  className=" py-2 rounded" onClick={onClose}>
               Cancel
-            </button>
-            <button type="submit" className="bg-blue-500 text-red-600 px-4 py-2 rounded">
+            </Button>
+            <Button gradientDuoTone="greenToBlue" type="submit" className=" py-2 rounded">
               Book Now
-            </button>
+            </Button>
           </div>
         </form>
       </div>

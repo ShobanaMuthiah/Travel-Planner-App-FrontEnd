@@ -23,6 +23,14 @@ body{
 .navLink{
     color: rgb(255, 255, 255) !important;
 }
+.quote{
+    color:rgb(8, 156, 114) !important;
+}
+.plan{
+    color:rgb(1, 105, 1) !important;
+background-color: rgba(177, 200, 180, 0.392) !important;
+border-radius:10px !important;
+}
 .navLink:hover{
     color:greenyellow !important;
     font-weight:bolder !important;
