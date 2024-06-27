@@ -12,7 +12,7 @@ const Home = () => {
   const location = useLocation();
 
   useEffect(() => {
-    
+
     dispatch(fetchTourPlans());
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
@@ -20,7 +20,7 @@ const Home = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  }, [dispatch]);
+  }, [dispatch,location]);
 
   const handleBookNow = (plan) => {
     setSelectedPlan(plan);
