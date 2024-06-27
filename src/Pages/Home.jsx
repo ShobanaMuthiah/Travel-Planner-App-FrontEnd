@@ -156,7 +156,7 @@ const Home = () => {
               {carouselData.map((image, index) => (
                 <div
                   key={index}
-                  className="flex h-full image items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
+                  className="flex h-full image img items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
                   style={{ backgroundImage: `url(${image.image})` }}
                 >
                   <div className="text-center text-white p-4">

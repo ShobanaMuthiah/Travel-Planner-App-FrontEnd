@@ -47,31 +47,18 @@ const Nav = () => {
             font-weight: 400;
             font-style: normal;
           }
-
-          .three-d::before,
-          .three-d::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -1;
-          }
-
-          .three-d::before {
-            color: #c0c0c0;
-            transform: translate(2px, 2px);
-            z-index: -2;
-          }
-
-          .three-d::after {
-            color: #808080;
-            transform: translate(4px, 4px);
-            z-index: -3;
-          }
-
+            @media (max-width: 600px) {
+  .three-d {
+    font-size: 1.5rem; 
+  }
+}
+     @media (max-width: 250px) {
+  .three-d {
+    font-size: 1.2rem; 
+  }
+}
           .Navbar {
             font-family: "Sorts Mill Goudy", serif;
-            font-weight: 400;
             font-style: normal;
           }
 
@@ -84,6 +71,23 @@ const Nav = () => {
           .navLink:hover {
             text-decoration: underline;
           }
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;  
+  justify-content: flex-end;
+}
+
+.navButton {
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .navButton {
+  padding:0;
+    font-size: 0.5rem;
+  }
+}
 
           .navbar-collapse {
             flex-grow: 1;
@@ -95,16 +99,16 @@ const Nav = () => {
 
       <Navbar className="Navbar" data-text="APEXORA" fluid rounded>
         <Navbar.Brand href="/">
-          <img src="https://img.icons8.com/?size=100&id=vAyHnkZOlhyF&format=png&color=000000" className="mr-2 h-10 sm:h-9" alt="Apexora" />
-          <span className="self-center font-extrabold whitespace-nowrap text-xl three-d">APEXORA</span>
+          <img src="https://img.icons8.com/?size=100&id=vAyHnkZOlhyF&format=png&color=000000" className="m-2 h-10 sm:h-9" alt="Apexora" />
+          <span className="self-center font-extrabold whitespace-nowrap sm:size-1 text-xl three-d">APEXORA</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
           {!isAuthenticated && (
-            <>
-              <Link className="navLink" to="/"><Button className="mr-3">Home</Button></Link>
-              <Link to="/login"><Button gradientMonochrome="cyan">Login</Button></Link>
-              <Link to="/register"><Button gradientMonochrome="cyan" className="ml-3">Register</Button></Link>
-            </>
+            <div className=" nav flex flex-wrap gap-2 ">
+              <Link  to="/"><Button gradientMonochrome="cyan" className="navButton">Home</Button></Link>
+              <Link to="/login"><Button gradientMonochrome="cyan" className="navButton">Login</Button></Link>
+              <Link to="/register"><Button gradientMonochrome="cyan" className="navButton">Register</Button></Link>
+            </div>
           )}
         </div>
         {isAuthenticated && (
