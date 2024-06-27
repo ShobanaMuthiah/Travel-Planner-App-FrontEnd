@@ -7,27 +7,22 @@ import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const [loading,setloading]=useState(false)
   const tourPlans = useSelector((state) => state.tourPlans.tourPlans);
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [loading, setLoading] = useState(true); // New loading state
   const location = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true); // Set loading to true before fetching data
-      await dispatch(fetchTourPlans());
-      setLoading(false); // Set loading to false after fetching data
-
-      if (location.hash) {
-        const element = document.getElementById(location.hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+setloading(true)
+    dispatch(fetchTourPlans());
+    setloading(false)
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
-    };
-
-    fetchData();
-  }, [dispatch, location]);
+    }
+  }, [dispatch,location]);
 
   const handleBookNow = (plan) => {
     setSelectedPlan(plan);
@@ -36,7 +31,6 @@ const Home = () => {
   const handleCloseModal = () => {
     setSelectedPlan(null);
   };
-
   const carouselData = [
     {
       image: 'https://plus.unsplash.com/premium_photo-1670986971794-1ab9ec4beb28?dpr=1&w=306&auto=format&fit=crop&q=60&crop=entropy&cs=tinysrgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8N3x8ZXhwbG9yZXJ8ZW58MHwwfHx8MTcxOTIyODA2N3wx&ixlib=rb-4.0.3',
@@ -51,16 +45,19 @@ const Home = () => {
       content: 'Travel far enough, you meet yourself.',
     },
   ];
-
   return (
-    <div>
+  
+    <div >
       <style>
-        {`
-          .image {
+    {`
+     .image {
             position: relative;
             height: 100%;
+          
             background-size: cover;
             background-position: center;
+            
+
           }
           .image::before {
             content: '';
@@ -71,7 +68,7 @@ const Home = () => {
             bottom: 0;
             filter: blur(5px); 
             z-index: 0;
-            width: 100%;
+  width:100%;
           }
           .content {
             position: relative;
@@ -85,144 +82,162 @@ const Home = () => {
             text-align: center;
             padding: 20px;
           }
-        `}
-      </style>
-      <div className="title-container">
-        <h1 className="animated-text">
-          <span className="word">A</span>
-          <span className="word">P</span>
-          <span className="word">E</span>
-          <span className="word">X</span>
-          <span className="word">O</span>
-          <span className="word">R</span>
-          <span className="word">A</span>
-        </h1>
-      </div>
-      <h2 className="text-center italic quote mb-1">"Make your international trip today with Apexora"</h2>
 
-      {loading ? (
-        <div className="flex justify-center items-center h-screen">
-          <Spinner aria-label="Loading" size='xl'/>
-        </div>
-      ) : (
-        <>
-          <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-            <Carousel
-              additionalTransfrom={0}
-              arrows
-              autoPlay
-              autoPlaySpeed={3000}
-              centerMode={false}
-              className=""
-              containerClass="container"
-              customButtonGroup=""
-              dotListClass=""
-              draggable
-              focusOnSelect={false}
-              infinite
-              itemClass=""
-              keyBoardControl
-              minimumTouchDrag={80}
-              renderButtonGroupOutside={false}
-              responsive={{
-                desktop: {
-                  breakpoint: {
-                    max: 3000,
-                    min: 1024,
-                  },
-                  items: 3,
-                  partialVisibilityGutter: 40,
-                },
-                mobile: {
-                  breakpoint: {
-                    max: 464,
-                    min: 0,
-                  },
-                  items: 1,
-                  partialVisibilityGutter: 30,
-                },
-                tablet: {
-                  breakpoint: {
-                    max: 1024,
-                    min: 464,
-                  },
-                  items: 2,
-                  partialVisibilityGutter: 30,
-                },
-              }}
-              showDots
-              sliderClass=""
-              slidesToSlide={1}
-              swipeable
-            >
-              {carouselData.map((image, index) => (
-                <div
-                  key={index}
-                  className="flex h-full image items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
-                  style={{ backgroundImage: `url(${image.image})` }}
-                >
-                  <div className="text-center text-white p-4">
-                    <p className="text-lg font-bold">{image.content}</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>
+
+          
+          `}
+  </style>
+  <div className="title-container">
+      <h1 className="animated-text  ">
+        <span className="word text-rose-950">A</span>
+        <span className="word text-rose-800">P</span>
+        <span className="word text-rose-700">E</span>
+        <span className="word text-rose-600">X</span>
+        <span className="word text-rose-500">O</span>
+        <span className="word text-rose-400">R</span>
+        <span className="word text-rose-300">A</span>
+      </h1>
+    </div>
+    <h2 className='text-center italic  quote mb-1'>"Make your international trip today with Apexora"</h2>
+{
+  loading ? (
+    <div className="flex justify-center items-center h-screen">
+      <Spinner color="success" size="lg" aria-label="Loading" />
+    </div>
+  ) : 
+(
+  <>
+            <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+      <Carousel
+        additionalTransfrom={0}
+        arrows
+        autoPlay
+        autoPlaySpeed={3000}
+        centerMode={false}
+        containerClass="container"
+        draggable
+        focusOnSelect={false}
+        infinite
+        keyBoardControl
+        minimumTouchDrag={80}
+        renderButtonGroupOutside={false}
+        responsive={{
+          desktop: {
+            breakpoint: {
+              max: 3000,
+              min: 1024,
+            },
+            items: 3,
+            partialVisibilityGutter: 40,
+          },
+          mobile: {
+            breakpoint: {
+              max: 464,
+              min: 0,
+            },
+            items: 1,
+            partialVisibilityGutter: 30,
+          },
+          tablet: {
+            breakpoint: {
+              max: 1024,
+              min: 464,
+            },
+            items: 2,
+            partialVisibilityGutter: 30,
+          },
+        }}
+        showDots
+        slidesToSlide={1}
+        swipeable
+      >
+        {carouselData.map((image, index) => (
+          <div
+            key={index}
+            className="flex h-full image items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
+            style={{  backgroundImage: `url(${image.image})`
+             }}
+          >
+            <div className="text-center text-white p-4">
+           <p className="text-lg font-bold ">{image.content}</p></div>
           </div>
-          <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Tour Plans</h2>
-          <div className="align-center">
-            <div className="row row-cols-1 row-cols-sm-3">
-              {tourPlans.map((plan) => (
-                <div key={plan._id} className="border col mb-2 border-gray-200 rounded-lg shadow-md overflow-hidden">
-                  <img
-                    src={plan.image}
-                    alt={plan.title}
-                    className="w-full img object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
-                    <p className="text-gray-700 mb-2">{plan.description}</p>
-                    <p className="text-gray-700 mb-2">Duration: {plan.duration} Days</p>
-                    <p className="text-gray-700 mb-4">Price: &nbsp; &#8377; {plan.price}</p>
-                    <div className="flex justify-between">
-                      <Button gradientMonochrome="lime" pill onClick={() => handleBookNow(plan)}>
-                        Book Now
-                      </Button>
-                    </div>
-                  </div>
+        ))}
+      </Carousel>
+    </div>
+      <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">Tour Plans</h2>
+      <div className="align-center">
+
+      <div className="row row-cols-1 row-cols-sm-3 ">
+        {tourPlans.map((plan) => (
+          <div key={plan._id} className="border col mb-2 border-gray-200 rounded-lg shadow-md overflow-hidden">
+            
+              <img
+                src={plan.image}
+                alt={plan.title}
+                className="w-full img object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
+                <p className="text-gray-700 mb-2">{plan.description}</p>
+                <p className="text-gray-700 mb-2">Duration: {plan.duration} Days</p>
+                <p className="text-gray-700 mb-4">Price: &nbsp; &#8377; {plan.price}</p>
+                <div className="flex justify-between">
+                  <Button gradientMonochrome="lime" pill
+                    
+                    onClick={() => handleBookNow(plan)}
+                  >
+                    Book Now
+                  </Button>
                 </div>
-              ))}
-            </div>
-            <section id="about-us">
-              <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">About Us</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-            </section>
-            <section id="privacy">
-              <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Privacy Policy</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-            </section>
+              </div>
           </div>
-        </>
-      )}
+        ))}
+      </div>
+      <section id="about-us">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+      </section>
+      <section id="privacy">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3 ">Privacy Policy</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
+          imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
+          nulla facilisis quam.
+        </p>
+        </section>
+      </div>
       {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
+  </>
+)}
     </div>
   );
 };
