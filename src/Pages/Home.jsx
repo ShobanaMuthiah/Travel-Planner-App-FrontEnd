@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTourPlans } from '../Features/Dispatch/Dispatch';
 import BookingModal from './BookingModal';
-import { Button, Carousel } from 'flowbite-react';
+import { Button, Carousel, Spinner } from 'flowbite-react';
 import { useLocation } from 'react-router-dom';
 
 const Home = () => {
