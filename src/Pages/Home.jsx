@@ -87,6 +87,7 @@ const Home = () => {
           }
         `}
       </style>
+      
       <div className="title-container">
         <h1 className="animated-text">
           <span className="word text-rose-950">A</span>
