@@ -228,6 +228,7 @@ setloading(true)
           imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
           nulla facilisis quam.
         </p>
+        
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci
           imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam
@@ -235,9 +236,10 @@ setloading(true)
         </p>
         </section>
       </div>
-      {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
   </>
 )}
+
+      {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
     </div>
   );
 };
