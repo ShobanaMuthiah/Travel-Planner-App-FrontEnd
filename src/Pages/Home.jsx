@@ -113,14 +113,10 @@ setloading(true);
         autoPlay
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
         containerClass="container"
-        customButtonGroup=""
-        dotListClass=""
         draggable
         focusOnSelect={false}
         infinite
-        itemClass=""
         keyBoardControl
         minimumTouchDrag={80}
         renderButtonGroupOutside={false}
