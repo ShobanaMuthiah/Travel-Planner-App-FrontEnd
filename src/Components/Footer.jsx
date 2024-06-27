@@ -1,6 +1,6 @@
 import React from 'react';
-import 'flowbite/dist/flowbite.css';
 import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -12,10 +12,10 @@ const Footer = () => {
           <p className="mb-2">Plan your trips with ease and joy.</p>
         </div>
         <div className=" text-center md:flex-row md:items-center mt-5 mb-2">
-        <Link to="src\Pages\Home.jsx.#about-us" className="text-green-900 fLink px-3 py-2">About Us</Link>
+        <Link to="/#about-us" className="text-green-900 fLink px-3 py-2">About Us</Link>
 
           <Link to="#contact" className="text-green-900 fLink px-3 py-2">Contact</Link>
-          <Link to="src\Pages\Home.jsx.#privacy" className="text-green-900 fLink px-3 py-2">Privacy Policy</Link>
+          <Link to="/#privacy" className="text-green-900 fLink px-3 py-2">Privacy Policy</Link>
         </div>
         <small>&copy; {currentYear} SHOBANA. All rights reserved.</small>
 
