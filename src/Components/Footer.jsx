@@ -14,7 +14,7 @@ const Footer = () => {
         <div className=" text-center md:flex-row md:items-center mt-5 mb-2">
         <Link to="/#about-us" className="text-green-900 fLink px-3 py-2">About Us</Link>
 
-          <Link to="tel:+918976543210" className="text-green-900 fLink px-3 py-2">Contact</Link>
+          <a href="tel:+918976543210" className="text-green-900 fLink px-3 py-2">Contact</a>
           <Link to="/#privacy" className="text-green-900 fLink px-3 py-2">Privacy Policy</Link>
         </div>
         <small>&copy; {currentYear} SHOBANA. All rights reserved.</small>
