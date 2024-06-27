@@ -3,14 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTourPlans } from '../Features/Dispatch/Dispatch';
 import BookingModal from './BookingModal';
 import { Button, Carousel } from 'flowbite-react';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
   const tourPlans = useSelector((state) => state.tourPlans.tourPlans);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
+    
     dispatch(fetchTourPlans());
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   }, [dispatch]);
 
   const handleBookNow = (plan) => {
