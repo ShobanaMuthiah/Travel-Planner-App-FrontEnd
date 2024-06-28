@@ -25,7 +25,7 @@ const BookingModal = ({ plan, onClose }) => {
       arrival, 
       timing 
     }));
-    onClose(); // Close the modal after booking
+    onClose(); 
   };
   
   return (

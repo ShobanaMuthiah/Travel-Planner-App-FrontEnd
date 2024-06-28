@@ -38,7 +38,12 @@ const BookingList = () => {
           <thead>
             <tr className="bg-gray-100">
               <th className="border border-gray-300 px-4 py-2 text-left">Customer Name</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Customer Email</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Customer Phone</th>
+
               <th className="border border-gray-300 px-4 py-2 text-left">Transportation</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Departure</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Arrival</th>
               <th className="border border-gray-300 px-4 py-2 text-center">Actions</th>
             </tr>
           </thead>
@@ -46,7 +51,13 @@ const BookingList = () => {
             {bookings.map((booking) => (
               <tr key={booking._id}>
                 <td className="border border-gray-300 px-4 py-2">{booking.customerName}</td>
+                <td className="border border-gray-300 px-4 py-2">{booking.customerEmail}</td>
+                <td className="border border-gray-300 px-4 py-2">{booking.customerPhone}</td>
                 <td className="border border-gray-300 px-4 py-2">{booking.transportation}</td>
+                <td className="border border-gray-300 px-4 py-2">{booking.departure}</td>
+
+                <td className="border border-gray-300 px-4 py-2">{booking.arrival}</td>
+
                 <td className="border border-gray-300 px-4 py-2 text-center">
                   <Button color='failure'
                     onClick={() => handleDelete(booking._id)}

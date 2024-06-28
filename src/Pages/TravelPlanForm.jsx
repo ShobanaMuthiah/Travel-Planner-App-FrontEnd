@@ -8,7 +8,7 @@ const TravelPlanForm = () => {
   const [transportation, setTransportation] = useState('');
   const [departure, setDeparture] = useState('');
   const [arrival, setArrival] = useState('');
-  const [timing, setTiming] = useState(''); // Assuming timing is in full time format
+  const [timing, setTiming] = useState('');
   const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
@@ -25,16 +25,15 @@ const TravelPlanForm = () => {
     formData.append('destination', destination);
     formData.append('details', details);
     formData.append('transportation', transportation);
-    formData.append('departure', new Date(departure).toISOString().split('T')[0]); // Only date part
-    formData.append('arrival', new Date(arrival).toISOString().split('T')[0]); // Only date part
-    formData.append('timing', timing); // Assuming timing is already in the required format
+    formData.append('departure', new Date(departure).toISOString().split('T')[0]);
+    formData.append('arrival', new Date(arrival).toISOString().split('T')[0]);
+    formData.append('timing', timing); 
     if (image) {
       formData.append('image', image);
     }
 
     dispatch(createTravelPlan(formData, token));
 
-    // Clear form fields after submission (optional)
     setDestination('');
     setDetails('');
     setTransportation('');

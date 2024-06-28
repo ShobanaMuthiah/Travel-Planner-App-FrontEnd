@@ -17,7 +17,7 @@ import {
   updateTourPlans,
 } from '../Update/Update';
 
-// Authentication
+//Authentication
 
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try {
@@ -25,7 +25,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
     const { user, token } = res.data;
 
     if (user.role === 'admin') {
-      user.isAdmin = true; // Add isAdmin flag to user object
+      user.isAdmin = true; //admin is true when the role is given by user is as admin
     }
 
     localStorage.setItem('token', token);
@@ -39,12 +39,10 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
 });
 
 
-
 export const register = createAsyncThunk('register',
   async ({name, email, password, role}) => {
     try {
       await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/register', { name, email, password, role });
-  
    
     } catch (error) {
       console.error('Registration failed', error);
@@ -98,9 +96,6 @@ if (!user._id) {
     console.log(id);
     const resData=await axios.get(`https://travel-planner-app-backend.onrender.com/api/bookings/${id}`, { headers: { 'Authorization': token } })
       updateBookings(resData.data);
-
-   
-
     } catch (error) {
       console.error('Failed ', error);
     }

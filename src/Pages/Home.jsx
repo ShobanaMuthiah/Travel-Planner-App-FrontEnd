@@ -56,11 +56,14 @@ const Home = () => {
     <div>
       <style>
         {`
-          .image {
+       .image {
             position: relative;
             height: 100%;
+          
             background-size: cover;
             background-position: center;
+            
+
           }
           .image::before {
             content: '';
@@ -71,7 +74,7 @@ const Home = () => {
             bottom: 0;
             filter: blur(5px); 
             z-index: 0;
-            width: 100%;
+  width:100%;
           }
           .content {
             position: relative;
@@ -83,20 +86,20 @@ const Home = () => {
             color: white;
             font-weight: bold;
             text-align: center;
-            padding: 20px;
+            padding: 50px;
           }
         `}
       </style>
       
       <div className="title-container">
         <h1 className="animated-text">
-          <span className="word text-rose-950">A</span>
-          <span className="word text-rose-800">P</span>
-          <span className="word text-rose-700">E</span>
-          <span className="word text-rose-600">X</span>
-          <span className="word text-rose-500">O</span>
-          <span className="word text-rose-400">R</span>
-          <span className="word text-rose-300">A</span>
+          <span className="word">A</span>
+          <span className="word">P</span>
+          <span className="word">E</span>
+          <span className="word">X</span>
+          <span className="word">O</span>
+          <span className="word">R</span>
+          <span className="word">A</span>
         </h1>
       </div>
       <h2 className="text-center italic quote mb-1">"Make your international trip today with Apexora"</h2>
@@ -114,14 +117,10 @@ const Home = () => {
               autoPlay
               autoPlaySpeed={3000}
               centerMode={false}
-              className=""
               containerClass="container"
-              customButtonGroup=""
-              dotListClass=""
               draggable
               focusOnSelect={false}
               infinite
-              itemClass=""
               keyBoardControl
               minimumTouchDrag={80}
               renderButtonGroupOutside={false}
@@ -149,15 +148,14 @@ const Home = () => {
                 },
               }}
               showDots
-              sliderClass=""
               slidesToSlide={1}
               swipeable
             >
               {carouselData.map((image, index) => (
                 <div
                   key={index}
-                  className="flex h-full image img items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
-                  style={{ backgroundImage: `url(${image.image})` }}
+                  className="flex h-full image  items-center w-full img object-cover justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
+                  style={{ backgroundImage: `url(${image.image}) ` }}
                 >
                   <div className="text-center text-white p-4">
                     <p className="text-lg font-bold">{image.content}</p>

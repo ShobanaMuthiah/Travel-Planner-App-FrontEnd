@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../Features/Dispatch/Dispatch'; // Adjust the import path as necessary
+import { register } from '../Features/Dispatch/Dispatch'; 
 import { Button } from 'flowbite-react';
-import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');

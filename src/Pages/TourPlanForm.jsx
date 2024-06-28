@@ -21,13 +21,12 @@ const TourPlanForm = () => {
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
-    formData.append('duration', parseInt(duration)); // Ensure duration is parsed to integer
-    formData.append('price', parseInt(price)); // Ensure price is parsed to integer
+    formData.append('duration', parseInt(duration));
+    formData.append('price', parseInt(price));
     formData.append('image', image);
 
     dispatch(createTourPlan(formData, token));
 
-    // Clear form fields after submission (optional)
     setTitle('');
     setDescription('');
     setDuration('');
