@@ -15,6 +15,8 @@ import UserTravel from './Pages/UserTravel';
 import Activate from './Pages/Activate';
 import UserTour from './Pages/UserTour';
 import Footer from './Components/Footer';
+import ForgotPassword from './Pages/ForgotPassword';
+import Reset from './Pages/Reset';
 
 const App = () => {
   return (
@@ -38,7 +40,10 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/mybookings' element={<MyBooking/>}/>
         <Route path='/activate/:token' element={<Activate/>}/>
-</Routes>
+        <Route path='/forgot-password' element={<ForgotPassword/>}/>
+        <Route path='/reset-password/:token' element={<Reset/>}/>
+
+          </Routes>
     <Footer/>
     </BrowserRouter>
   );

@@ -13,6 +13,9 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate=useNavigate();
+  const handleForgot=()=>{
+    navigate('/forgot-password')
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -74,6 +77,9 @@ const Login = () => {
         <div className="flex justify-center mt-6">
           <Button gradientMonochrome="cyan" type="submit" className="rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Login
+          </Button>
+          <Button gradientMonochrome="cyan" onClick={handleForgot} className="rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+            Forgot Password
           </Button>
         </div>
       </form>
