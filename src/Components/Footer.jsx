@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     const currentYear = new Date().getFullYear();
   return (
+    
     <footer className="bg-gray-400 text-white py-8">
       <div className="container mx-auto items-center text-center">
         <div className="text-center md:text-left">

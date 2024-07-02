@@ -11,28 +11,27 @@ const Home = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 3;
 
   useEffect(() => {
     const fetchData = async () => {
-    
-      setLoading(true); 
+      setLoading(true);
       await dispatch(fetchTourPlans());
       setLoading(false);
-
-     
     };
 
     fetchData();
   }, [dispatch]);
 
-  useEffect(()=>{
-    if ( location.hash) {
+  useEffect(() => {
+    if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  },[location])
+  }, [location]);
 
   const handleBookNow = (plan) => {
     setSelectedPlan(plan);
@@ -41,6 +40,14 @@ const Home = () => {
   const handleCloseModal = () => {
     setSelectedPlan(null);
   };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const currentPagePlans = tourPlans.slice(startIndex, startIndex + pageSize);
+  const totalPages = Math.ceil(tourPlans.length / pageSize);
 
   const carouselData = [
     {
@@ -61,14 +68,11 @@ const Home = () => {
     <div>
       <style>
         {`
-       .image {
+          .image {
             position: relative;
             height: 100%;
-          
             background-size: cover;
             background-position: center;
-            
-
           }
           .image::before {
             content: '';
@@ -77,9 +81,9 @@ const Home = () => {
             left: 0;
             right: 0;
             bottom: 0;
-            filter: blur(5px); 
+            filter: blur(5px);
             z-index: 0;
-  width:100%;
+            width: 100%;
           }
           .content {
             position: relative;
@@ -95,7 +99,7 @@ const Home = () => {
           }
         `}
       </style>
-      
+
       <div className="title-container">
         <h1 className="animated-text">
           <span className="word">A</span>
@@ -144,8 +148,8 @@ const Home = () => {
               {carouselData.map((image, index) => (
                 <div
                   key={index}
-                  className="flex h-full image  items-center w-full img object-cover justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
-                  style={{ backgroundImage: `url(${image.image}) ` }}
+                  className="flex h-full image items-center w-full img object-cover justify-center bg-gray-400 dark:bg-gray-700 dark:text-white"
+                  style={{ backgroundImage: `url(${image.image})` }}
                 >
                   <div className="text-center text-white p-4">
                     <p className="text-lg font-bold">{image.content}</p>
@@ -157,7 +161,7 @@ const Home = () => {
           <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Tour Plans</h2>
           <div className="align-center">
             <div className="row row-cols-1 row-cols-sm-3">
-              {tourPlans.map((plan) => (
+              {currentPagePlans.map((plan) => (
                 <div key={plan._id} className="border col mb-2 border-gray-200 rounded-lg shadow-md overflow-hidden">
                   <img
                     src={plan.image}
@@ -178,40 +182,49 @@ const Home = () => {
                 </div>
               ))}
             </div>
-          
+            <div className="flex justify-center mt-4">
+              {Array.from({ length: totalPages }, (_, index) => (
+                <Button
+                  key={index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                  gradientMonochrome={currentPage === index + 1 ? 'success' : 'info'}
+                  className={`mx-1 ${currentPage === index + 1 ? 'font-bold' : ''}`}
+                >
+                  {index + 1}
+                </Button>
+              ))}
+            </div>
           </div>
-          
         </>
       )}
-         <section id="about-us">
-              <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">About Us</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-            </section>
-            <section id="privacy">
-              <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Privacy Policy</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
-              </p>
-            </section>
+      <section id="about-us">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">About Us</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+      </section>
+      <section id="privacy">
+        <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Privacy Policy</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
+        </p>
+      </section>
       {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
-   
     </div>
   );
 };
