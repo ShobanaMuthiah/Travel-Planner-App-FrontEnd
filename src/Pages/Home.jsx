@@ -9,25 +9,30 @@ const Home = () => {
   const dispatch = useDispatch();
   const tourPlans = useSelector((state) => state.tourPlans.tourPlans);
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Set loading to true before fetching data
+    
+      setLoading(true); 
       await dispatch(fetchTourPlans());
-      setLoading(false); // Set loading to false after fetching data
+      setLoading(false);
 
-      if (location.hash) {
-        const element = document.getElementById(location.hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+     
     };
 
     fetchData();
-  }, [dispatch, location]);
+  }, [dispatch]);
+
+  useEffect(()=>{
+    if ( location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  },[location])
 
   const handleBookNow = (plan) => {
     setSelectedPlan(plan);
@@ -112,18 +117,6 @@ const Home = () => {
         <>
           <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
             <Carousel
-              additionalTransfrom={0}
-              arrows
-              autoPlay
-              autoPlaySpeed={3000}
-              centerMode={false}
-              containerClass="container"
-              draggable
-              focusOnSelect={false}
-              infinite
-              keyBoardControl
-              minimumTouchDrag={80}
-              renderButtonGroupOutside={false}
               responsive={{
                 desktop: {
                   breakpoint: {
@@ -147,9 +140,6 @@ const Home = () => {
                   items: 1,
                 },
               }}
-              showDots
-              slidesToSlide={1}
-              swipeable
             >
               {carouselData.map((image, index) => (
                 <div
@@ -188,7 +178,12 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <section id="about-us">
+          
+          </div>
+          
+        </>
+      )}
+         <section id="about-us">
               <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">About Us</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
@@ -215,10 +210,8 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis risus ut orci imperdiet, sed blandit urna varius. Mauris pharetra, enim vitae gravida laoreet, quam nulla facilisis quam.
               </p>
             </section>
-          </div>
-        </>
-      )}
       {selectedPlan && <BookingModal plan={selectedPlan} onClose={handleCloseModal} />}
+   
     </div>
   );
 };
