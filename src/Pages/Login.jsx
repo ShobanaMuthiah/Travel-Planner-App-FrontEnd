@@ -74,7 +74,7 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-6">
+        <div className="mt-6">
           <Button gradientMonochrome="cyan" type="submit" className="rounded mr-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Login
           </Button>
