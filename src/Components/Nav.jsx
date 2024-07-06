@@ -1,4 +1,4 @@
-// Navbar Component
+
 import { Button, Navbar } from "flowbite-react";
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -94,6 +94,10 @@ const Nav = () => {
             display: flex;
             justify-content: flex-end;
           }
+            .admin{
+            color:brown;
+            }
+          
         `}
       </style>
 
@@ -101,6 +105,11 @@ const Nav = () => {
         <Navbar.Brand href="/">
           <img src="https://img.icons8.com/?size=100&id=vAyHnkZOlhyF&format=png&color=000000" className="m-2 h-10 sm:h-9" alt="Apexora" />
           <span className="self-center font-extrabold whitespace-nowrap sm:size-1 text-xl three-d">APEXORA</span>
+          {isAdmin&& (
+            <span className="p-2 pt-3 admin " >
+              Admin
+            </span>
+          )}
         </Navbar.Brand>
         <div className="flex md:order-2">
           {!isAuthenticated && (
