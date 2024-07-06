@@ -75,10 +75,10 @@ const Login = () => {
         </div>
 
         <div className="flex justify-center mt-6">
-          <Button gradientMonochrome="cyan" type="submit" className="rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+          <Button gradientMonochrome="cyan" type="submit" className="rounded mr-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Login
           </Button>
-          <Button gradientMonochrome="cyan" onClick={handleForgot} className="rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+          <Button gradientMonochrome="cyan" onClick={handleForgot} className="rounded mr-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
             Forgot Password
           </Button>
         </div>
