@@ -75,7 +75,7 @@ const Login = () => {
         </div>
 
         <div className="mt-6">
-          <Button gradientMonochrome="cyan" type="submit" className="rounded mr-2 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+          <Button gradientMonochrome="cyan" type="submit" pill>
             Login
           </Button>
           <Button gradientMonochrome="cyan" onClick={handleForgot} pill>
