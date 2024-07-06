@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBooking } from '../Features/Dispatch/Dispatch';
 import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ plan, onClose }) => {
   const [customerName, setCustomerName] = useState('');
@@ -13,6 +14,8 @@ const BookingModal = ({ plan, onClose }) => {
   const [arrival, setArrival] = useState('');
   const [timing, setTiming] = useState('');
   const dispatch = useDispatch();
+  const navi=useNavigate()
+  const [msg,setmsg]=useState(false);
   
   const handleBooking = (e) => {
     e.preventDefault();
@@ -28,6 +31,13 @@ const BookingModal = ({ plan, onClose }) => {
     onClose(); 
   };
   
+ const handleSubmit=()=>{
+  setmsg(true)
+setTimeout(() => {
+  navi('/')
+  setmsg(false)
+}, 1000);
+ } 
   return (
     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg shadow-md p-4 w-full max-w-md h-full max-h-[80%] overflow-y-auto relative">
@@ -129,9 +139,14 @@ const BookingModal = ({ plan, onClose }) => {
             <Button gradientDuoTone="redToYellow"  className=" py-2 rounded" onClick={onClose}>
               Cancel
             </Button>
-            <Button gradientDuoTone="greenToBlue" type="submit" className=" py-2 rounded">
+            <Button gradientDuoTone="greenToBlue" onSubmit={handleSubmit} type="submit" className=" py-2 rounded">
               Book Now
             </Button>
+            {msg&&
+(
+  <span className="text-green-500">Successfully Booked</span>
+)
+            }
           </div>
         </form>
       </div>

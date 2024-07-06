@@ -18,14 +18,13 @@ import {
 } from '../Update/Update';
 
 //Authentication
-
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try {
     const res = await axios.post('https://travel-planner-app-backend.onrender.com/api/auth/login', { email, password });
     const { user, token } = res.data;
 
     if (user.role === 'admin') {
-      user.isAdmin = true; //admin is true when the role is given by user is as admin
+      user.isAdmin = true; 
     }
 
     localStorage.setItem('token', token);
