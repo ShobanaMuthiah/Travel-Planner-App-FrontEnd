@@ -114,9 +114,9 @@ const Nav = () => {
         <div className="flex md:order-2">
           {!isAuthenticated && (
             <div className=" nav flex flex-wrap gap-2 ">
-              <Link  to="/"><Button gradientMonochrome="cyan" className="navButton">Home</Button></Link>
-              <Link to="/login"><Button gradientMonochrome="cyan" className="navButton">Login</Button></Link>
-              <Link to="/register"><Button gradientMonochrome="cyan" className="navButton">Register</Button></Link>
+              <Link  to="/"><Button gradientMonochrome="purple" pill className="navButton">Home</Button></Link>
+              <Link to="/login"><Button gradientMonochrome="purple" pill className="navButton">Login</Button></Link>
+              <Link to="/register"><Button gradientMonochrome="purple" pill className="navButton">Register</Button></Link>
             </div>
           )}
         </div>
@@ -142,7 +142,7 @@ const Nav = () => {
                   <Link className="navLink" to="/bookings">Bookings</Link>
                 </>
               )}
-              <Button gradientMonochrome="cyan" onClick={handleLogout}>Logout</Button>
+              <Button gradientMonochrome="purple" pill onClick={handleLogout}>Logout</Button>
             </Navbar.Collapse>
           </>
         )}

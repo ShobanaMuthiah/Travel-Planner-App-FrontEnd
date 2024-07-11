@@ -160,26 +160,32 @@ const Home = () => {
           </div>
           <h2 className="mt-2 p-2 text-2xl italic plan font-bold mb-3">Tour Plans</h2>
           <div className="align-center">
-            <div className="row row-cols-1 row-cols-sm-3">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
               {currentPagePlans.map((plan) => (
-                <div key={plan._id} className="border col mb-2 border-gray-200 rounded-lg shadow-md overflow-hidden">
-                  <img
+               <div className="col">
+ <div key={plan._id} className="border card h-100 rounded">
+                 <div className=" p-4 h-50 flex justify-center ">
+                 <img
                     src={plan.image}
                     alt={plan.title}
-                    className="w-full h-48 object-cover"
+                    className='h-100 w-100'
                   />
-                  <div className="p-4">
+                 </div>
+                  <div className="p-4 pb-0 card-body">
                     <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
                     <p className="text-gray-700 mb-2">{plan.description}</p>
                     <p className="text-gray-700 mb-2">Duration: {plan.duration} Days</p>
                     <p className="text-gray-700 mb-4">Price: &nbsp; &#8377; {plan.price}</p>
-                    <div className="flex justify-between">
+                    
+                  </div>
+                  <div className="pb-2 flex justify-center">
                       <Button gradientMonochrome="lime" pill onClick={() => handleBookNow(plan)}>
                         Book Now
                       </Button>
                     </div>
-                  </div>
                 </div>
+
+               </div>
               ))}
             </div>
             <div className="flex justify-center mt-4">
