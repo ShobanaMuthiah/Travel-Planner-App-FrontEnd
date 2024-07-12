@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTravelPlans, removeTravelPlan } from '../Features/Dispatch/Dispatch';
+import { Button } from 'flowbite-react';
 
 const TravelPlanList = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ const TravelPlanList = () => {
       <div className="grid grid-cols-1  gap-4">
         {travelPlans.map((plan) => (
           <div key={plan._id} className="bg-white row border border-gray-200 rounded-lg overflow-hidden shadow-md">
-           <div className="col">
-           <img src={plan.image} alt={plan.destination} className="w-full h-48 object-cover" />
+           <div className="col-12 p-2 col-sm ">
+           <img src={plan.image} alt={plan.destination} className="w-full h-100  object-cover" />
            </div>
             <div className="p-4 col">
               <h3 className="text-xl font-bold mb-2"> {plan.destination}</h3>
@@ -38,12 +39,12 @@ const TravelPlanList = () => {
 
 
               <div className="flex justify-end">
-                <button
-                  className="bg-red-500 text-green font-bold px-4 py-2 rounded"
+                <Button gradientMonochrome="failure"
+        
                   onClick={() => handleDelete(plan._id)}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           </div>

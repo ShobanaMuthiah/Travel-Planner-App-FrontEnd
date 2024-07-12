@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTravelPlan } from '../Features/Dispatch/Dispatch';
+import { Button } from 'flowbite-react';
 
 const TravelPlanForm = () => {
   const [destination, setDestination] = useState('');
@@ -45,6 +46,8 @@ const TravelPlanForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h1 className='m-3'>Travel Plans</h1>
+
       <form onSubmit={handleCreatePlan} className="space-y-4">
         <div>
           <label htmlFor="destination" className="block text-sm font-medium text-gray-700">Destination</label>
@@ -73,16 +76,42 @@ const TravelPlanForm = () => {
         </div>
 
         <div>
-          <label htmlFor="transportation" className="block text-sm font-medium text-gray-700">Transportation</label>
-          <input
-            id="transportation"
-            type="text"
-            value={transportation}
-            onChange={(e) => setTransportation(e.target.value)}
-            placeholder="Enter transportation"
-            className="input-field"
-            required
-          />
+          <label className="block text-sm font-medium text-gray-700">Transportation</label>
+          <div className="flex flex-col">
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="transportation"
+                value="flight"
+                checked={transportation === 'flight'}
+                onChange={(e) => setTransportation(e.target.value)}
+                className="form-radio"
+              />
+              <span className="ml-2">Flight</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="transportation"
+                value="train"
+                checked={transportation === 'train'}
+                onChange={(e) => setTransportation(e.target.value)}
+                className="form-radio"
+              />
+              <span className="ml-2">Train</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                name="transportation"
+                value="car"
+                checked={transportation === 'car'}
+                onChange={(e) => setTransportation(e.target.value)}
+                className="form-radio"
+              />
+              <span className="ml-2">Car</span>
+            </label>
+          </div>
         </div>
 
         <div>
@@ -133,9 +162,9 @@ const TravelPlanForm = () => {
           />
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
+        <Button type="submit" gradientMonochrome="cyan" pill>
           Create Plan
-        </button>
+        </Button>
       </form>
     </div>
   );

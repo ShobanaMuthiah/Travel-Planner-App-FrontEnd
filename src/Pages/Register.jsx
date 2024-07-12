@@ -38,6 +38,7 @@ const Register = () => {
 
   return (
     <div className="card mx-auto max-w-md p-6">
+      <h1 className='m-2 font-bold mt-0'>Register</h1>
       <form onSubmit={handleRegister} className="space-y-4">
         <div className="flex flex-wrap -mx-2">
           <div className="w-full px-2">

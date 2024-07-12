@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Button } from 'flowbite-react';
 import React, { useState } from 'react';
 
 const ForgotPassword = () => {
@@ -27,7 +28,7 @@ settoast(true)
 
     return (
         <div>
-            <h1 className='title'>Forgot Password</h1>
+            <h1 className='m-3 font-bold'>Forgot Password</h1>
             <div className="card-center m-3">
                 <div className="card card-format text-center">
 
@@ -37,13 +38,15 @@ settoast(true)
                 <label className='col-12 col-sm-4 p-2 text-sm-end'>
                     Email:
                 </label>
-                <input className='border-black' required type="email" name="email" value={email} onChange={(e)=>setemail(e.target.value)}/><br />
+                <input placeholder='Enter your registered Email' className='border-black' required type="email" name="email" value={email} onChange={(e)=>setemail(e.target.value)}/><br />
 <br />
                 </div>
             </div>
-                <button className="btn" type='submit' >
+                <div className="flex justify-center mb-3">
+                <Button  gradientMonochrome="cyan" type='submit' >
                     Verify
-                </button>
+                </Button>
+                </div>
                 {toast && (
                         <div className="toast-container position-fixed top-0 end-0 p-3" >
                             <div className="toast show" role="alert" aria-live="assertive" aria-atomic="true">

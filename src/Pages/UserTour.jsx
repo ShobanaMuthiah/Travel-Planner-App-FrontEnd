@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTourPlans } from '../Features/Dispatch/Dispatch';
 import BookingModal from './BookingModal';
+import { Button } from 'flowbite-react';
 
 const UserTour = () => {
   const dispatch = useDispatch();
@@ -24,15 +25,15 @@ const UserTour = () => {
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Tour Plans</h2>
         {tourPlans.map((plan) => (
-      <div className=" gap-4">
+      <div className=" grid grid-cols-1  gap-4">
 
           <div key={plan._id} className="border row  border-gray-200 rounded-lg shadow-md overflow-hidden">
             
-            <div className="col">
+            <div className="col-12 p-2 col-sm ">
             <img
                 src={plan.image}
                 alt={plan.title}
-                className="w-full img object-cover"
+                className="w-full h-100  object-cover"
               />
             </div>
               <div className="p-4 col">
@@ -40,13 +41,14 @@ const UserTour = () => {
                 <p className="text-gray-700 mb-2">{plan.description}</p>
                 <p className="text-gray-700 mb-2">Duration: {plan.duration}</p>
                 <p className="text-gray-700 mb-4">Price: ${plan.price}</p>
-                <div className="flex justify-between">
-                  <button
+                <div className="flex justify-center">
+                  <Button
+                  gradientMonochrome="success"
                     className=" text-green-950  px-4 py-2 rounded"
-                    onClick={() => handleBookNow(plan)}
+                    onClick={() => handleBookNow(plan)} pill
                   >
                     Book Now
-                  </button>
+                  </Button>
                 </div>
               </div>
           </div>

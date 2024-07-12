@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTourPlan } from '../Features/Dispatch/Dispatch';
+import { Button } from 'flowbite-react';
 
 const TourPlanForm = () => {
   const [title, setTitle] = useState('');
@@ -36,6 +37,8 @@ const TourPlanForm = () => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h1 className='m-3'>Tour Plans</h1>
+
       <form onSubmit={handleCreatePlan} className="space-y-4">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
@@ -101,9 +104,9 @@ const TourPlanForm = () => {
           />
         </div>
 
-        <button type="submit" className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">
+        <Button type="submit" gradientMonochrome="cyan">
           Create Plan
-        </button>
+        </Button>
       </form>
     </div>
   );

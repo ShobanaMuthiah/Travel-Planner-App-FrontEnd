@@ -13,7 +13,7 @@ body{
   font-style: normal;
 }
 .img{
-    height:150px !important;
+    height:250px !important;
 }
 
 .Navbar{
@@ -390,4 +390,9 @@ border-radius:10px !important;
   .fLink:hover{
 color:purple;
 font-weight:bolder
+  }
+  @media (max-width:300px){
+    .img{
+      height:160px !important;
+  }
   }

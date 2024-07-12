@@ -1,4 +1,3 @@
-
 import { Button, Navbar } from "flowbite-react";
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +7,7 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [collapseOpen, setCollapseOpen] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
   const user = useSelector(state => state.auth.user);
@@ -29,6 +29,10 @@ const Nav = () => {
     setIsAdmin(false);
   };
 
+  const toggleNavbar = () => {
+    setCollapseOpen(!collapseOpen);
+  };
+
   return (
     <>
       <style>
@@ -47,16 +51,16 @@ const Nav = () => {
             font-weight: 400;
             font-style: normal;
           }
-            @media (max-width: 600px) {
-  .three-d {
-    font-size: 1.5rem; 
-  }
-}
-     @media (max-width: 250px) {
-  .three-d {
-    font-size: 1.2rem; 
-  }
-}
+          @media (max-width: 600px) {
+            .three-d {
+              font-size: 1.5rem; 
+            }
+          }
+          @media (max-width: 250px) {
+            .three-d {
+              font-size: 1.2rem; 
+            }
+          }
           .Navbar {
             font-family: "Sorts Mill Goudy", serif;
             font-style: normal;
@@ -71,33 +75,33 @@ const Nav = () => {
           .navLink:hover {
             text-decoration: underline;
           }
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2px;  
-  justify-content: flex-end;
-}
+          .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;  
+            justify-content: flex-end;
+          }
 
-.navButton {
-  font-size: 1rem;
-}
+          .navButton {
+            font-size: 1rem;
+          }
 
-@media (max-width: 600px) {
-  .navButton {
-  padding:0;
-    font-size: 0.5rem;
-  }
-}
+          @media (max-width: 600px) {
+            .navButton {
+              padding: 0;
+              font-size: 0.5rem;
+            }
+          }
 
           .navbar-collapse {
             flex-grow: 1;
-            display: flex;
+            display: ${collapseOpen ? 'flex' : 'none'};
             justify-content: flex-end;
           }
-            .admin{
-            color:brown;
-            }
-          
+
+          .admin {
+            color: brown;
+          }
         `}
       </style>
 
@@ -105,16 +109,16 @@ const Nav = () => {
         <Navbar.Brand href="/">
           <img src="https://img.icons8.com/?size=100&id=vAyHnkZOlhyF&format=png&color=000000" className="m-2 h-10 sm:h-9" alt="Apexora" />
           <span className="self-center font-extrabold whitespace-nowrap sm:size-1 text-xl three-d">APEXORA</span>
-          {isAdmin&& (
-            <span className="p-2 pt-3 admin " >
+          {isAdmin && (
+            <span className="p-2 pt-3 admin">
               Admin
             </span>
           )}
         </Navbar.Brand>
         <div className="flex md:order-2">
           {!isAuthenticated && (
-            <div className=" nav flex flex-wrap gap-2 ">
-              <Link  to="/"><Button gradientMonochrome="purple" pill className="navButton">Home</Button></Link>
+            <div className="nav flex flex-wrap gap-2">
+              <Link to="/"><Button gradientMonochrome="purple" pill className="navButton">Home</Button></Link>
               <Link to="/login"><Button gradientMonochrome="purple" pill className="navButton">Login</Button></Link>
               <Link to="/register"><Button gradientMonochrome="purple" pill className="navButton">Register</Button></Link>
             </div>
@@ -122,7 +126,7 @@ const Nav = () => {
         </div>
         {isAuthenticated && (
           <>
-            <Navbar.Toggle />
+            <Navbar.Toggle onClick={toggleNavbar} />
             <Navbar.Collapse className="navbar-collapse">
               <Link className="navLink" to="/">Home</Link>
               {!isAdmin && (

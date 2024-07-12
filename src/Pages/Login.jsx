@@ -43,6 +43,8 @@ const Login = () => {
 
   return (
     <div className="card mx-auto max-w-md p-6">
+      <h1 className='m-2 font-bold mt-0'>Login</h1>
+
       <form onSubmit={handleLogin} className="space-y-4">
         <div className="flex flex-wrap -mx-2">
           <div className="w-full px-2">
@@ -74,14 +76,14 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="mt-6">
-          <Button gradientMonochrome="cyan" type="submit" pill>
+        <div className="mt-6 flex justify-center">
+          <Button gradientMonochrome="cyan"  type="submit" pill>
             Login
-          </Button>
-          <Button gradientMonochrome="cyan" onClick={handleForgot} pill>
-            Forgot Password
-          </Button>
-        </div>
+          </Button> </div>
+          <div className="text-center">
+           <small> Are you forgot your password? <span className="forgot text-red-700" onClick={handleForgot}>Click here</span></small>
+          </div>
+       
       </form>
       
       {submitted && (

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { Button } from 'flowbite-react';
 {/* <FaEye /> */}
 
 const Reset = () => {
@@ -97,9 +98,11 @@ const Reset = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn" type='submit'>
+                        <div className="flex justify-center mb-2">
+                        <Button  gradientMonochrome="cyan" type='submit'>
                             Reset
-                        </button>
+                        </Button>
+                        </div>
                         {toast && (
                             <div className="toast-container position-fixed top-0 end-0 p-3">
                                 <div className="toast show" role="alert" aria-live="assertive" aria-atomic="true">
